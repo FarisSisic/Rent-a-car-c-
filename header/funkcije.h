@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 void unosDatuma(int d, int m, int g){
 	int mjesec[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 	cout << "Unesite dan na koji zelite rentati auto: ";
@@ -26,4 +27,60 @@ void unosDatuma(int d, int m, int g){
 	}while(g<2023);
 	
 	
+=======
+#include <string>
+#include <iostream>
+#include <fstream>
+using namespace std;
+void registracija() {
+   string username, password, Ime, Prezime;
+
+   cout << "Unesite svoje ime: "; 
+   cin >> Ime;
+
+   cout << "Unesite svoje prezime: ";
+   cin >> Prezime;
+
+   cout << "Unesite vlastito korisnicko ime: ";
+   cin >> username;
+
+   cout << "Unesite sifru: ";
+   cin >> password;
+
+   ofstream outFile;
+   outFile.open("korisnici.txt", ios::app); // Otvaranje fajla u append modu da bi se novi korisnici dodavali na kraj fajla
+   outFile << Ime << " " << Prezime << " " << username << " " << password <<"\n" << endl;
+   outFile.close();
+   
+   cout << "Vasa registracija je uspjesna ! Sada se mozete loginovati." << endl;
+}
+void login() {
+   string username, password, storedUsername, storedPassword, Ime, Prezime; //postavljamo varijable storedUsername i storedPassword da bi mogli provjeriti da li se uneseni podaci i podaci u .txtu podudaraju
+   bool found = false; // varijabla found se koristi da provjerimo da li postoji korisnik
+   cout << "Unesite svoje korisnicko ime: ";
+   cin >> username;
+   cout << "\nUnesite sifru: ";
+   cin >> password;
+   
+   ifstream inFile; // provjeravamo da li postoji korisnik
+   inFile.open("korisnici.txt");
+   while (inFile >> Ime >> Prezime >> storedUsername >> storedPassword) {
+      if (username == storedUsername && password == storedPassword) {
+         found = true;
+         break;
+      }
+   }
+   inFile.close();
+   
+   if (found) {
+      if (username == "admin" && password == "adminadmin") {
+         cout << "Administrator ulogovan !" << endl;
+      } 
+      else {
+         cout << "Dobrodosli, " << Ime << " " << Prezime << "!" << endl;
+      }
+   } else {
+      cout << "Neispravan unos." << endl;
+   }
+>>>>>>> Stashed changes
 }
