@@ -3,8 +3,6 @@ struct Auta{
 	char naziv_auta;
 	int sjedista;
 	int cijena_po_danu;
-	char gorivo;
-	char pogon;
 };
 struct Transmisija{
 	Auta auta;
