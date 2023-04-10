@@ -1,4 +1,7 @@
-<<<<<<< Updated upstream
+#include <string>
+#include <iostream>
+#include <fstream>
+using namespace std;
 void unosDatuma(int d, int m, int g){
 	int mjesec[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 	cout << "Unesite dan na koji zelite rentati auto: ";
@@ -25,13 +28,7 @@ void unosDatuma(int d, int m, int g){
 		cout << "[GRESKA]Unijeli ste godinu koja je prosla" << endl;
 	}
 	}while(g<2023);
-	
-	
-=======
-#include <string>
-#include <iostream>
-#include <fstream>
-using namespace std;
+}
 void registracija() {
    string username, password, Ime, Prezime;
 
@@ -82,5 +79,4 @@ void login() {
    } else {
       cout << "Neispravan unos." << endl;
    }
->>>>>>> Stashed changes
 }
