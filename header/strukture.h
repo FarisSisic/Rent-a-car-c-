@@ -10,7 +10,7 @@ struct Transmisija{
 };
 
 struct Kubikaza{
-	Pogon pogon;
+	Transmisija trans;
 	int kubikaza;
 	char gorivo;
 };
