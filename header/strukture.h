@@ -8,10 +8,6 @@ struct Transmisija{
 	Auta auta;
 	char transmisija;
 };
-struct Pogon{
-	Transmisija trans;
-	char pogon;
-};
 
 struct Kubikaza{
 	Pogon pogon;
