@@ -3,15 +3,7 @@ struct Auta{
 	char naziv_auta;
 	int sjedista;
 	int cijena_po_danu;
-};
-struct Transmisija{
-	Auta auta;
-	char transmisija;
-};
-
-struct Kubikaza{
-	Transmisija trans;
-	int kubikaza;
+	char trans;
 	char gorivo;
 };
 struct Datum{

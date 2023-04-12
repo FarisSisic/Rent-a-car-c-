@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include "../header/funkcije.h"
-#include "../header/strukture.h"
+//#include "../header/strukture.h"
 using namespace std;
+
 
 int main(){
     int opcija;
@@ -11,6 +12,12 @@ int main(){
     cin >> opcija;
     if(opcija == 1){registracija();cout <<"\n";login();}
     if(opcija == 2){login();}
+    cout << "---------------------------------------\n"<<"Odaberite opciju: \n"<<"--------------------------------\n";
+    cout << "1.Iznajmljivanje auta\n2.Logout\n";
+    cin >> opcija;
+    if(opcija == 1){cout<<"Ovdje ide funkcija za rentat";}
+    if(opcija == 2){logout();}
     system("pause");
+    
     return 0;
 }

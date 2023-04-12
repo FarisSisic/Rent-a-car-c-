@@ -17,7 +17,6 @@ void unosDatuma(int d, int m, int g){
 		if(m<0 || m>12){
 		cout << "[GRESKA]Unijeli ste mjesec koji ne postoji u godini!" << endl;
 	}
-
 		
 	}while(m<0 || m>12);
 	
@@ -79,4 +78,12 @@ void login() {
    } else {
       cout << "Neispravan unos." << endl;
    }
+}
+void logout() {
+    int temp;
+    cout << "Odjavili ste se!" << endl;
+    cout << "Odaberite opciju :\n 1.Registracija\n 2.Login\n";
+    cin >> temp;
+    if(temp == 1){registracija();cout <<"\n";login();}
+    if(temp == 2){login();}
 }
