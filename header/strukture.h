@@ -24,6 +24,10 @@ struct Korisnici{
 	char password[50];
 	char ime[50];
 	char prezime[50];
+	int rola = 1; // Admin = 0;  Korisnik = 1; odredjivanje role 
+				  // za admina ili korisnika ali pri registraciji bit ce 
+				  // korisnik dok admin ne unese manuelno rolu za korisnika
 };
+
 
 
