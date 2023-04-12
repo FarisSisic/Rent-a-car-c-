@@ -49,7 +49,7 @@ void registracija(Korisnici k) {
 
    ofstream outFile;
    outFile.open("korisnici.txt", ios::app); // Otvaranje fajla u append modu da bi se novi korisnici dodavali na kraj fajla
-   outFile << k.ime << " " << k.prezime << " " << k.username << " " << k.password <<"\n" << endl;
+   outFile << k.ime << " " << k.prezime << " " << k.username << " " << k.password << " "<< k.rola <<"\n" << endl;
    outFile.close();
    
    cout << "Vasa registracija je uspjesna ! Sada se mozete loginovati." << endl;
@@ -60,7 +60,7 @@ void login(Korisnici k) {
    cout << "Unesite svoje korisnicko ime: ";
    cin >> k.username;
    cout << "\nUnesite sifru: ";
-   cin >> k.username;
+   cin >> k.password;
    
    ifstream inFile; // provjeravamo da li postoji korisnik
    inFile.open("korisnici.txt");
@@ -83,3 +83,6 @@ void login(Korisnici k) {
       cout << "Neispravan unos." << endl;
    }
 }
+
+
+
