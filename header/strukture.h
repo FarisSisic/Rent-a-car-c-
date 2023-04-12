@@ -18,4 +18,12 @@ struct Datum{
 	int d,m,g;
 };
 
+struct Korisnici{
+	int id_korisnika;
+	char username[50];
+	char password[50];
+	char ime[50];
+	char prezime[50];
+};
+
 
