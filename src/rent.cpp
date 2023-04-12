@@ -13,6 +13,17 @@ int main(){
     cin >> opcija;
     if(opcija == 1){registracija(k);cout <<"\n";login(k);}
     if(opcija == 2){login(k);}
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
     system("pause");
     return 0;
 }
