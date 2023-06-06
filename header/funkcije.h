@@ -1,8 +1,13 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "../header/strukture.h"
 using namespace std;
+
+
+
+
 
 	void popust(Auta a, int n){
 		if(n==1){
@@ -17,35 +22,6 @@ using namespace std;
 			
 		}
 	}
-
-void unosDatuma(int d, int m, int g){
-	cout << "Unesite dan na koji zelite rentati auto: ";
-	do{
-		cin >> d;
-		if(d<0 || d>31){
-		cout << "[GRESKA]Unijeli ste dan koji ne postoji u sedmici!" << endl;
-	}
-	}while(d<0 || d>31);
-	cout << "Unesite mjesec na koji zelite rentati auto: ";
-	do{
-		cin >> m;
-		if(m<0 || m>12){
-		cout << "[GRESKA]Unijeli ste mjesec koji ne postoji u godini!" << endl;
-	}
-
-		
-	}while(m<0 || m>12);
-	
-	cout << "Unesite godinu na koju zelite rentati auto: ";
-	do{
-		cin >> g;
-		if(g<2023){
-		cout << "[GRESKA]Unijeli ste godinu koja je prosla" << endl;
-	}
-	}while(g<2023);
-	cout << d << "." << m << "." << g << ".";
-}
-
 	
 
 void unosautomobila() {
@@ -102,25 +78,37 @@ void ispisautomobila(){
 	}
 	
 }
-void rezervacije(){
-	string ime_korisnika, prezime_korisnika, naziv_vozila, datum_preuzimanja, datum_vracanja, popust;
-	int id_rezervacije;
-	int id_rezervacije_vozila;
+void rezervacije(int id_korisnika2){
+
+		string Ime1, Prezime1, username1, password1;
+	int id_korisnika3;
+		int d2,m2,g2,d3,dd3;
 	ifstream inFile;
-	inFile.open("rezervacije.txt");
-	while(inFile >> id_rezervacije_vozila >> ime_korisnika >> prezime_korisnika >> naziv_vozila >> datum_preuzimanja >> datum_vracanja >> popust){
-		
-		id_rezervacije = id_rezervacije_vozila+1;
+		inFile.open("korisnici.txt");
+	while(inFile >> id_korisnika3 >> Ime1 >> Prezime1 >> username1 >> password1){
+		id_korisnika2 = id_korisnika3;
 	}
-	cout << "Unesite ime na koje cete rentati vozilo: ";
-   cin >> ime_korisnika;
-   cout << "Unesite prezime na koje cete rentati vozilo: ";
-   cin >> prezime_korisnika;
+	inFile.close();
+		string naziv_vozila, datum_preuzimanja, datum_vracanja, popust, Ime2, Prezime2;
+		int brojindexa, brojpenzionogceka;
+	int id_rezervacije = 0;
+	int id_rezervacije_vozila;
+	inFile.open("rezervacije.txt");
+	while (inFile >> id_rezervacije_vozila >> Ime2 >> Prezime2 >> naziv_vozila >> datum_preuzimanja >> datum_vracanja >> popust >> id_korisnika2 >> brojindexa >> brojpenzionogceka >> d3) {
+		if (id_rezervacije_vozila > id_rezervacije) {
+        id_rezervacije = id_rezervacije_vozila;
+        	
+    }
+	
+	}
+id_rezervacije++;
+
+
    	ispisautomobila();
 	
    cout << "Unesite vozilo koje zelite rentati: ";
    cin >> naziv_vozila;
-	int d,m,g,d1,m1,g1;
+	int d,m,g,d1,m1,g1, x;
    cout << "Unesite dan preuzimanja vozila: ";
    	cin >> d;
    	cout << "Unesite mjesec preuzimanja vozila: ";
@@ -134,40 +122,224 @@ void rezervacije(){
 	cout << "Unesite godinu povratka vozila: ";
 	cin >> g1;
 
+	d2 = d1-d;
+	m2=(m1-m)*30;
+	g2=(g1-g)*365;
+	dd3=d2+m2+g2;
 
-
-		cout << "1.STUDENT: 5% na cijenu po danu,\n2.PENZIONER: 10% na cijenu po danu\n";
+		cout << "1.STUDENT: 5% na cijenu po danu,\n2.PENZIONER: 10% na cijenu po danu,\n3. NISTA OD NAVEDENOG";
 		cout << "Izaberite popust: ";
 	   	cin >> x;
 
+		if(x==1){
+			cout << "Unesite broj indexa: ";
+			cin >> brojindexa;
+			cout << "Dobili ste popust od 5%!";
+			brojpenzionogceka = 0;
+		}else{
+			brojindexa=0;
+		}
+		if(x==2){
+			cout << "Unesite broj penzionog ceka: ";
+			cin >> brojpenzionogceka;
+			cout << "Dobili ste popust od 10%!";
+			brojindexa = 0;
+		}else{
+			brojpenzionogceka=0;
+		}
+		if(x==3){
+			brojpenzionogceka = 0;
+			brojindexa = 0;
+		}
+
+		
+
    
-   
-   	
+
    ofstream outFile;
    outFile.open("rezervacije.txt", ios::app);
-   outFile << id_rezervacije << " " << ime_korisnika << " " << prezime_korisnika << " " << naziv_vozila << " " << d << "." << m << "." << g << " " << d1 << "." << m1 << "." << g1 << " " << x <<"\n" << endl;
+   outFile << id_rezervacije << " " << Ime1 << " " << Prezime1 << " " << naziv_vozila << " " << d << "." << m << "." << g << " " << d1 << "." << m1 << "." << g1 << " " << x << " " << id_korisnika2 << " " << brojindexa << " " << brojpenzionogceka  << " " << dd3<<"\n" << endl;
    outFile.close();
 	
 }
 
+void pregled_korisnika(){
+	int id;
+	string ime, prezime, username, password;
+
+	cout << "Ime | Prezime | Username | Password\n";
+	ifstream inFile;
+	inFile.open("korisnici.txt");
+	while(inFile >> id >> ime >> prezime >> username >> password){
+		cout << ime << " | " << prezime << " | " << username << " | " << password << endl;
+	
+	}
+	inFile.close();
+	
+
+
+
+}
+
+
+
+
+
+struct Automobil {
+    int id_vozila;
+    string marka;
+    string model;
+    string sjedista;
+    int cijena_po_danu;
+    string vrsta_vozila;
+    string transmisija;
+    string kubikaza;
+    string gorivo;
+};
+	
+void rezervisana_vozila(int id_korisnika4) {
+    int naziv_vozila, id_vozila;
+    int id_rezervacije_vozila;
+    int id_korisnika5;
+    int cijena_sa_popustom, cijena_po_danu, popust, broj_dana_rezervisanja;
+    string datum_preuzimanja, datum_vracanja, Ime2, Prezime2, brojindexa, brojpenzionogceka;
+    string marka, model, sjedista, vrsta_vozila, transmisija, kubikaza, gorivo;
+	vector<Automobil> automobili;
+
+    ifstream inFile;
+    inFile.open("automobili.txt");
+    while (inFile >> id_vozila >> marka >> model >> sjedista >> cijena_po_danu >> vrsta_vozila >> transmisija >> kubikaza >> gorivo) {
+        Automobil automobil;
+        automobil.id_vozila = id_vozila;
+        automobil.marka = marka;
+        automobil.model = model;
+        automobil.sjedista = sjedista;
+        automobil.cijena_po_danu = cijena_po_danu;
+        automobil.vrsta_vozila = vrsta_vozila;
+        automobil.transmisija = transmisija;
+        automobil.kubikaza = kubikaza;
+        automobil.gorivo = gorivo;
+        automobili.push_back(automobil);
+    }
+    inFile.close();
+
+    inFile.open("rezervacije.txt");
+    while (inFile >> id_rezervacije_vozila >> Ime2 >> Prezime2 >> naziv_vozila >> datum_preuzimanja >> datum_vracanja >> popust >> id_korisnika5 >> brojindexa >> brojpenzionogceka >> broj_dana_rezervisanja) {
+        if (id_korisnika5 == id_korisnika4) {
+            for (const auto& automobil : automobili) {
+                if (automobil.id_vozila == naziv_vozila) {
+                	
+                    cout << automobil.marka << " | " << automobil.model << " | " << automobil.sjedista << " | " << automobil.cijena_po_danu << "KM | " << automobil.vrsta_vozila<< " | " << automobil.transmisija << " | " << automobil.kubikaza << " | " << automobil.gorivo << " | " << datum_preuzimanja << " | " << datum_vracanja << " | " << broj_dana_rezervisanja << " dana | " << endl;
+}
+}
+}
+}
+inFile.close();
+}
+
+
+   
+     void admin_pregled_rezervacija(){
+     	
+     	int id_vozila, cijena_po_danu;
+     	string marka, model, sjedista, vrsta_vozila, transmisija, kubikaza, gorivo;
+     	vector<Automobil> automobili;
+     	ifstream inFile;
+    inFile.open("automobili.txt");
+    while (inFile >> id_vozila >> marka >> model >> sjedista >> cijena_po_danu >> vrsta_vozila >> transmisija >> kubikaza >> gorivo) {
+        Automobil automobil;
+        automobil.id_vozila = id_vozila;
+        automobil.marka = marka;
+        automobil.model = model;
+        automobil.sjedista = sjedista;
+        automobil.cijena_po_danu = cijena_po_danu;
+        automobil.vrsta_vozila = vrsta_vozila;
+        automobil.transmisija = transmisija;
+        automobil.kubikaza = kubikaza;
+        automobil.gorivo = gorivo;
+        automobili.push_back(automobil);
+    }
+    inFile.close();
+     	
+     	
+    
+     	int id;
+     	int id_vozila1, id_popusta, id_korisnika, brojindexa, brojpenzionogceka, brojdanazauzimanja;
+     	string ime, prezime, datum_preuzimanja, datum_povratka;
+     	cout << "------------------------------------\n";
+     	cout << "PREGLED HISTORIJE REZERVISANIH AUTOMOBILA\n";
+     	cout << "------------------------------------\n";
+     	inFile.open("rezervacije.txt");
+     	while(inFile >> id >> ime >> prezime >> id_vozila1 >> datum_preuzimanja >> datum_povratka >> id_popusta >> id_korisnika >> brojindexa >> brojpenzionogceka >> brojdanazauzimanja ){
+     		
+			 for(const auto& automobil : automobili){
+			 	if(automobil.id_vozila == id_vozila1){
+			 		
+			 	 cout << id << " | " << ime << " | " << prezime << " | " << automobil.marka << " | " << automobil.model << " | " << automobil.cijena_po_danu << "KM | " << " | " << datum_preuzimanja << " | " << datum_povratka << " | " << id_popusta << " | " << id_korisnika << " | " << brojindexa << " | " << brojpenzionogceka << " | " << brojdanazauzimanja << " dana | " << endl;
+
+
+				 }
+			 }
+			 
+			 
+			 
+		 }
+     	
+     	
+     	
+	 }
+
 
 	int z;
-   	void korisnik_menu(){
+	int p;
+   	void korisnik_menu(int id_korisnika1){
 		cout << "1. Pregled vozila: " << endl;
     	cout << "2. Popusti: " << endl;
     	cout << "3. Rezervisite vozilo: " << endl;
     	cout << "4. Rezervisano vozilo: " << endl;
+    	cout << "5. Odjava!" << endl;
     	cout << "Izaberite neku opciju: ";
 			cin >> z;
 			if(z==1){
+					cout << "\n***************************************\n" << endl;
 				ispisautomobila();
+					cout << "\n***************************************\n" << endl;
+				system("PAUSE");
+				system("cls");
+						cout << "\n---------------------------------------\n" << endl;
+						korisnik_menu(id_korisnika1);	
+					
 				}else if(z==2){
+					cout << "\n***************************************\n" << endl;
 					cout << "--------------------\n";
 					cout << "\tPOPUSTI\n";
 					cout << "--------------------\n";
-					cout << "1.STUDENT: 5% na cijenu po danu,\n2.PENZIONER: 10% na cijenu po danu,\n3.10+ DANA: 15% na cijenu po danu." << endl;
+					cout << "1.STUDENT: 5% na cijenu po danu,\n2.PENZIONER: 10% na cijenu po danu,\n";
+					cout << "\n***************************************\n" << endl;
+					system("PAUSE");
+					system("cls");
+						cout << "\n---------------------------------------\n" << endl;
+						korisnik_menu(id_korisnika1);	
+					
+					
 				}else if(z==3){
-					rezervacije();
+					rezervacije(id_korisnika1);
+			cout << "\n---------------------------------------\nUspjesno ste rezervisali vozilo !\n---------------------------------------\n" << endl;
+						korisnik_menu(id_korisnika1);
+				}else if(z==4){
+										cout << "\n***************************************\n" << endl;
+					rezervisana_vozila(id_korisnika1);
+										cout << "\n***************************************\n" << endl;
+					system("PAUSE");
+					system("cls");
+						cout << "\n---------------------------------------\n" << endl;
+						korisnik_menu(id_korisnika1);	
+					
+					
+				}else if(z==5){
+					cout << "USPJESNO STE SE ODJAVILI!" << endl;
+					system("break");
+					
 				}
 			}
 
@@ -187,7 +359,24 @@ void rezervacije(){
 			}else if(z==2){
 				ispisautomobila();
             cout << "\n---------------------------------------\n" << endl;
+            system("PAUSE");
+				system("cls");
             admin_menu();
+			}else if(z==3){
+				admin_pregled_rezervacija();
+				cout << "\n---------------------------------------\n" << endl;
+				system("PAUSE");
+				system("cls");
+				admin_menu();
+			}else if(z==4){
+				pregled_korisnika();
+				cout << "\n---------------------------------------\n" << endl;
+				system("PAUSE");
+				system("cls");
+            admin_menu();
+			}else if(z==5){
+				cout << "USPJESNO STE SE ODJAVILI!" << endl;
+				system("break");
 			}
     	
 	}
@@ -200,7 +389,6 @@ void login() {
    cin >> username;
    cout << "\nUnesite sifru: ";
    cin >> password;
-   
    ifstream inFile; // provjeravamo da li postoji korisnik
    inFile.open("korisnici.txt");
    while (inFile >> id >> Ime >> Prezime >> storedUsername >> storedPassword) {
@@ -211,6 +399,8 @@ void login() {
    }
    inFile.close();
    
+   
+   
  
    if (found) {
       if (username == "admin" && password == "adminadmin") {
@@ -218,8 +408,10 @@ void login() {
          admin_menu();
       } 
       else {
-         cout << "Dobrodosli, " << Ime << " " << Prezime << "!" << endl;
-         korisnik_menu();
+      	 cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-" << endl;
+         cout << "\tDobrodosli, " << Ime << " " << Prezime << "!" << endl;
+         cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-" << endl;
+         korisnik_menu(id);
       }
    } else {
       cout << "Neispravan unos." << endl;
@@ -309,9 +501,6 @@ void registracija() {
 		}
 	}
 	
-
-	
-
 
 
 

@@ -1,23 +1,25 @@
+
 #include <iostream>
 #include <fstream>
 #include "../header/funkcije.h"
-//#include "../header/strukture.h"
+
 using namespace std;
 
 
 int main(){
-	Korisnici k;
+	int a,b,c,d;
     int opcija;
     cout << "---------------------------------------\n"<<"Dobrodosli u nasu Rent-A-Car agenciju !\n"<<"---------------------------------------\n";
-    cout << "\nOdaberite opciju :\n 1.Registracija\n 2.Login\n";
+    cout << "\n 1.Registracija\n 2.Login\n 3.Napustite program\n";
+    
+    cout << "Odaberite opciju: ";
     cin >> opcija;
-    if(opcija == 1){registracija(k);cout <<"\n";login(k);}
-    if(opcija == 2){login(k);}
-    
-    
-    
+    if(opcija == 1){registracija();cout <<"\n";login();}
+    if(opcija == 2){login();}
+    if(opcija == 3){exit(0);}
+
 
     system("pause");
-    
     return 0;
 }
+

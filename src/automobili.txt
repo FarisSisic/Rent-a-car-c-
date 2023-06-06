@@ -1,0 +1,8 @@
+1 Ford Focus 5 30 Auto Manuelac 1.6 Dizel
+
+2 Skoda Octavia 5 40 Auto Manuelac 1.9 Dizel
+
+3 Chevrolet Lacetti 5 20 Auto Manuelac 1.4 Benzin
+
+4 Golf 5 5 45 Auto Automatik 1.6 Dizel
+
