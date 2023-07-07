@@ -267,7 +267,7 @@ inFile.close();
      	int id_vozila1, id_popusta, id_korisnika, brojindexa, brojpenzionogceka, brojdanazauzimanja;
      	string ime, prezime, datum_preuzimanja, datum_povratka;
      	cout << "------------------------------------\n";
-     	cout << "PREGLED HISTORIJE REZERVISANIH AUTOMOBILA\n";
+     	cout << "PREGLED HISTORIJE REZERVISANIH VOZILA\n";
      	cout << "------------------------------------\n";
      	inFile.open("rezervacije.txt");
      	while(inFile >> id >> ime >> prezime >> id_vozila1 >> datum_preuzimanja >> datum_povratka >> id_popusta >> id_korisnika >> brojindexa >> brojpenzionogceka >> brojdanazauzimanja ){
